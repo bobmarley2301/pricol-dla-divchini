@@ -115,7 +115,37 @@ h1 {
 .explosion {
   position: absolute;
   pointer-events: none;
-  animation: explode 1.2s ease-out forwards;
+}
+
+.explosion::before,
+.explosion::after,
+.explosion .kiss1,
+.explosion .kiss2,
+.explosion .kiss3 {
+  content: "💋";
+  position: absolute;
+  font-size: 24px;
+  animation: kissFloat 1.2s ease-out forwards;
+}
+
+.explosion::before {
+  animation-delay: 0s;
+}
+
+.explosion::after {
+  animation-delay: 0.2s;
+}
+
+.explosion .kiss1 {
+  animation-delay: 0.4s;
+}
+
+.explosion .kiss2 {
+  animation-delay: 0.6s;
+}
+
+.explosion .kiss3 {
+  animation-delay: 0.8s;
 }
 
 .explosion-text {
@@ -128,17 +158,17 @@ h1 {
   animation: textFloat 2s ease-out forwards;
 }
 
-@keyframes explode {
+@keyframes kissFloat {
   0% {
-    transform: scale(1) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
     opacity: 1;
   }
   50% {
-    transform: scale(2.5) rotate(180deg);
+    transform: translate(var(--x, 50px), var(--y, -50px)) rotate(180deg);
     opacity: 0.8;
   }
   100% {
-    transform: scale(4) rotate(360deg);
+    transform: translate(var(--x2, 100px), var(--y2, -100px)) rotate(360deg);
     opacity: 0;
   }
 }

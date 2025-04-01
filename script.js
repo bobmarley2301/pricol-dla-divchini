@@ -26,8 +26,25 @@ document.addEventListener("DOMContentLoaded", () => {
     explosion.style.top = rect.top + rect.height / 2 + "px";
     explosion.style.width = rect.width + "px";
     explosion.style.height = rect.height + "px";
-    explosion.style.background =
-      "radial-gradient(circle, #ff69b4 0%, #ff1493 30%, transparent 70%)";
+
+    // Додаємо додаткові поцілунки
+    for (let i = 1; i <= 3; i++) {
+      const kiss = document.createElement("div");
+      kiss.className = `kiss${i}`;
+
+      // Випадкові значення для напрямку руху
+      const x = (Math.random() - 0.5) * 200;
+      const y = (Math.random() - 0.5) * 200;
+      const x2 = (Math.random() - 0.5) * 400;
+      const y2 = (Math.random() - 0.5) * 400;
+
+      kiss.style.setProperty("--x", `${x}px`);
+      kiss.style.setProperty("--y", `${y}px`);
+      kiss.style.setProperty("--x2", `${x2}px`);
+      kiss.style.setProperty("--y2", `${y2}px`);
+
+      explosion.appendChild(kiss);
+    }
 
     // Створюємо текст
     const text = document.createElement("div");
